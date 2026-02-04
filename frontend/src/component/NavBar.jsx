@@ -9,13 +9,6 @@ class NavBar extends Component {
     // let value=(this.props.pass) ? undefined : "";
     return (
       <div>
-        {/* <nav id="main-nav">
-          <img src={Logo} alt="" />
-          <h3 className="navBar-username">Logout</h3>
-          <h3 className="navBar-username">{this.props.loginInfo["Role"]}</h3>
-        </nav> */}
-
-
             <Navbar bg="light" expand="lg" className="nav-bar" fixed="top"  id="main-nav">
         {/* <div className="container"> */}
           <Navbar.Brand id="logo-anchor">
@@ -43,16 +36,6 @@ class NavBar extends Component {
             
          
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-         
-          {/* <Navbar.Collapse className="justify-content-end">
-          <Navbar.Text>
-            <a>
-            admin
-            </a>
-            
-          </Navbar.Text>
-        </Navbar.Collapse> */}
-        
           <Navbar.Collapse id="logout-navbar-nav">
             <Nav className="ml-auto">             
               <a  onClick={this.props.onClick} className="navbar-right-content">
@@ -65,20 +48,6 @@ class NavBar extends Component {
           </Navbar.Collapse>
         {/* </div> */}
       </Navbar>
-
-{/* <Navbar id="main-nav">
-  <Navbar.Brand href="#home">Navbar with text</Navbar.Brand>
-  <Navbar.Toggle />
-  <Navbar.Collapse className="justify-content-end">
-    <Navbar.Text>
-      Signed in as: <a href="#login">Mark Otto</a>
-    </Navbar.Text>
-    <Navbar.Text>
-      Signed in as: <a href="#login">Mark Otto</a>
-    </Navbar.Text>
-  </Navbar.Collapse>
-  
-</Navbar> */}
       </div>
     );
   }

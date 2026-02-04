@@ -1,30 +1,26 @@
 const mongoose = require("mongoose");
-const { 
-  Employee, 
-  Salary, 
-  Education, 
-  FamilyInfo, 
-  WorkExperience, 
-  LeaveApplication, 
-  Role, 
-  Position, 
-  Department, 
-  Portal, 
-  Project, 
-  Country, 
-  State, 
-  City, 
-  Company 
+require("dotenv").config();
+
+const {
+  Employee,
+  Salary,
+  Education,
+  FamilyInfo,
+  WorkExperience,
+  LeaveApplication,
+  Role,
+  Position,
+  Department,
+  Portal,
+  Project,
+  Country,
+  State,
+  City,
+  Company,
 } = require("./models"); // Import all models
 
 // Connecting to MongoDB
-let mongoURI;
-if (!process.env.DATABASEURL) {
-  var config = require("./config.js");
-  mongoURI = config.DATABASEURL;
-} else {
-  mongoURI = process.env.DATABASEURL;
-}
+const mongoURI = process.env.MONGODB_URI;
 
 // Connect to MongoDB
 mongoose.connect(mongoURI, {
@@ -129,12 +125,18 @@ const seedRole = async (companyId) => {
 
 // Seed Position
 const seedPosition = async (companyId) => {
-  return await Position.create({ PositionName: "HR Manager", company: companyId });
+  return await Position.create({
+    PositionName: "HR Manager",
+    company: companyId,
+  });
 };
 
 // Seed Department
 const seedDepartment = async (companyId) => {
-  return await Department.create({ DepartmentName: "Human Resources", company: companyId });
+  return await Department.create({
+    DepartmentName: "Human Resources",
+    company: companyId,
+  });
 };
 
 // Seed Employee
@@ -153,6 +155,7 @@ const seedEmployee = async (roleId, positionId, departmentId) => {
     role: [roleId],
     position: [positionId],
     department: [departmentId],
+    Account: 3,
   });
 };
 
@@ -194,15 +197,15 @@ const seedFamilyInfo = async (employeeId) => {
 // Seed Work Experience
 // Seed Work Experience
 const seedWorkExperience = async (employeeId) => {
-    await WorkExperience.create({
-      EmployeeId: employeeId,
-      CompanyName: "Tech Solutions Ltd",
-      Designation: "Software Engineer", // Include the Designation field
-      FromDate: new Date("2015-06-01"),
-      ToDate: new Date("2022-12-31"),
-      Responsibilities: "Developed software solutions.", // Optional field
-    });
-  };
+  await WorkExperience.create({
+    EmployeeId: employeeId,
+    CompanyName: "Tech Solutions Ltd",
+    Designation: "Software Engineer", // Include the Designation field
+    FromDate: new Date("2015-06-01"),
+    ToDate: new Date("2022-12-31"),
+    Responsibilities: "Developed software solutions.", // Optional field
+  });
+};
 // Seed Leave Application
 const seedLeaveApplication = async (employeeId) => {
   await LeaveApplication.create({
@@ -215,4 +218,4 @@ const seedLeaveApplication = async (employeeId) => {
   });
 };
 
-seedData();  // Call seed function
+seedData(); // Call seed function
