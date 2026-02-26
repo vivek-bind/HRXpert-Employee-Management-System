@@ -27,12 +27,15 @@ npm install
 MONGO_URI=your_mongodb_connection_string
 JWT_KEY=your_secret_key
 PORT=3000
-```
+
+
+---------
 
 ## Seed the Database
-
 cd backend
 node seed.js
+
+---------
 
 ## Default Accounts After Seeding
 
@@ -58,3 +61,5 @@ npm start
 ## application url
 
 http://localhost:3000
+
+```
